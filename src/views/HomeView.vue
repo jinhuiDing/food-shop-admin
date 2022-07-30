@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <h1>hello world</h1>
+
+    <p v-text="name"></p>
+<!--    v-text的简写-->
+    <p>{{name}}</p>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+import {reactive,toRefs} from "vue"
+    export  default {
+        name: "home",
+        setup(){
+            //beforecreate和created这两个生命周期
+           const data =  reactive({
+               name:"小红",
+               age:20
+           })
+            return{
+               ...toRefs(data)
+            }
+        }
+    }
 </script>
