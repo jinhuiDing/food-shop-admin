@@ -24,6 +24,17 @@
     <p v-if="isFalse">if</p>
     <p v-else>else</p>
 
+
+    <!--    for循环-->
+    <ul>
+        <!--   循环此userList-->
+        <!--        v-for=(每一个对象,下标) in 数组 -->
+        <li v-for="(user,index) in userList" :key="index">
+            学生姓名:{{user.username}}
+            学生年龄:{{user.userAge}}
+        </li>
+    </ul>
+
 </template>
 
 <script>
@@ -40,7 +51,25 @@
                 dataVal: 22,
                 isRed: true,
                 isTrue: true,
-                isFalse: false
+                isFalse: false,
+                userList: [
+                    {
+                        username: "小红",
+                        userAge: 10
+                    }, {
+                        username: "小名",
+                        userAge: 23
+                    }, {
+                        username: "小李",
+                        userAge: 34
+                    }, {
+                        username: "小王",
+                        userAge: 11
+                    }, {
+                        username: "小张",
+                        userAge: 9
+                    }
+                ]
             })
             return {
                 ...toRefs(data)
