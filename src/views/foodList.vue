@@ -1,12 +1,15 @@
 <template>
     <div>
-        <h1>Abc</h1>
+        食物列表
     </div>
 </template>
 
 <script>
     export default {
-        name: "Abc"
+        name: "foodList",
+        setup:(()=>{
+
+        })
     }
 </script>
 
