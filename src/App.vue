@@ -21,4 +21,13 @@
         display: flex;
         align-items: center;
     }
+
+    .page_content {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        padding: 20px;
+        background: #ffffff;
+        margin-top: 30px;
+    }
 </style>

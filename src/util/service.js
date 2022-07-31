@@ -25,7 +25,7 @@ service.interceptors.response.use(response => {
     loading.close()
     if (response.data.code !== 200) {
         ElMessage.error({
-            message: response.data.msg,
+            message: response.data.msg||'接口返回错误',
             type: 'error',
             duration: 2000
         })

@@ -18,4 +18,5 @@ module.exports = defineConfig({
             }
         }
     }
+    //跨域代理 end
 })

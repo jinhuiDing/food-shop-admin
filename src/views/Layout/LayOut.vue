@@ -41,7 +41,7 @@
                                 <span>菜品管理</span>
                             </template>
                             <el-menu-item-group>
-                                <el-menu-item index="/index">菜单列表</el-menu-item>
+                                <el-menu-item index="/food">菜单列表</el-menu-item>
                             </el-menu-item-group>
                         </el-sub-menu>
                         <el-sub-menu index="2">
@@ -71,15 +71,16 @@
     import {reactive, toRefs} from 'vue'
     import {useStore} from 'vuex'
     import {useRouter} from 'vue-router'
+
     export default {
         name: "LayOut",
         setup() {
             const store = useStore()
-            const router=useRouter()
+            const router = useRouter()
             const data = reactive({})
             const logout = () => {
                 localStorage.removeItem('loginData')
-                store.commit('setUserInfo',{})
+                store.commit('setUserInfo', {})
                 router.push('/login')
             }
 
@@ -114,5 +115,9 @@
 
     .title {
         color: #ffffff;
+    }
+
+    .el-main {
+        background: #efefef
     }
 </style>
