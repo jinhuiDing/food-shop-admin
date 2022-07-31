@@ -35,32 +35,33 @@
 <script>
     import {reactive, toRefs} from 'vue'
     import {useStore} from 'vuex'
+    import number from "@/store/state/num.state";
 
     export default {
         name: "login",
         setup() {
             const store = useStore()
-            const count = store.state.count
+            const count = store.state.number.count
             const data = reactive({
                 loginData: {
                     username: "",
                     password: ""
                 },
                 num: count,
-                numStatus: store.getters.countStatus
+                numStatus: store.getters['number.countStatus']
             })
-            console.log("修改前getter", store.getters.countStatus)
+            console.log("修改前getter", store.getters['number/countStatus'])
             const submitForm = (() => {
                 // store.commit('setCount', 100)
-                store.dispatch('setCountPromise', -100).then(
+                store.dispatch('number/setCountPromise', -100).then(
                     res => {
                         alert("修改成功")
-                        console.log("修改后getter", store.getters.countStatus)
+                        console.log("修改后getter", store.getters['number/countStatus'])
                     }
                 ).catch(err => {
                     alert(err)
                 })
-                console.log(store.state.count)
+                console.log(store.state.number.count+'=======')
             })
 
             return {
