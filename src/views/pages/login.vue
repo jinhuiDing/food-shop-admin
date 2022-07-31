@@ -55,6 +55,7 @@
             const submitForm = (() => {
                 // store.commit('setCount', 100)
                 store.commit('setUserInfo', data.loginData)
+                localStorage.setItem('loginData',JSON.stringify(data.loginData))
                 router.push({
                     path:'/index'
                 })

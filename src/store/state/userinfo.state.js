@@ -1,6 +1,6 @@
 export default {
     state: {
-        userInfo: {}
+        userInfo: (localStorage.getItem('loginData') && JSON.parse(localStorage.getItem('loginData'))) || {}
     },
     mutations: {
         setUserInfo(state, userInfo) {
