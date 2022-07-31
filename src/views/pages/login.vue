@@ -26,7 +26,6 @@
             <el-button type="primary" class="submit_btn" @click="submitForm"
             >登陆
             </el-button>
-            <p>{{num}}</p>
         </div>
 
     </div>
@@ -36,6 +35,8 @@
     import {reactive, toRefs} from 'vue'
     import {useStore} from 'vuex'
     import {useRouter} from 'vue-router'
+    import {ElMessage} from 'element-plus'
+    import {loginApi} from "@/util/request";
 
     export default {
         name: "login",
@@ -53,12 +54,18 @@
             })
             // console.log("修改前getter", store.getters['number/countStatus'])
             const submitForm = (() => {
-                // store.commit('setCount', 100)
-                store.commit('setUserInfo', data.loginData)
-                localStorage.setItem('loginData',JSON.stringify(data.loginData))
-                router.push({
-                    path:'/index'
+                //请求后台接口
+                loginApi(data.loginData).then(res => {
+                    console.log("响应的数据，",res)
+                    store.commit('setUserInfo', res.data)
+                    localStorage.setItem('loginData', JSON.stringify(res.data))
+                    router.push({
+                        path: '/index'
+                    })
+                }).catch(err => {
+                    ElMessage.error(err.msg)
                 })
+
 
             })
 
