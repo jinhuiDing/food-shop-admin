@@ -3,7 +3,7 @@
         <div class="form_wrap">
             <el-form :model="loginData"
                      ref="loginForm" label-width="100px">
-                <el-form-item label="用户名" prop="username"  :rules="[
+                <el-form-item label="用户名" prop="username" :rules="[
                     {
                         required:true,
                         message:'请输入用户名',
@@ -12,7 +12,7 @@
                 ]">
                     <el-input v-model="loginData.username" autocomplete="false" placeholder="请输入用户名"/>
                 </el-form-item>
-                <el-form-item  prop="password"  label="密码" :rules="[
+                <el-form-item prop="password" label="密码" :rules="[
                     {
                         required:true,
                         message:'密码不能为空',
@@ -23,9 +23,10 @@
                               placeholder="请输入密码"/>
                 </el-form-item>
             </el-form>
-            <el-button type="primary" class="submit_btn" @click="submitForm(ruleFormRef)"
+            <el-button type="primary" class="submit_btn" @click="submitForm()"
             >登陆
             </el-button>
+            <p>{{num}}</p>
         </div>
 
     </div>
@@ -33,18 +34,27 @@
 
 <script>
     import {reactive, toRefs} from 'vue'
+    import {useStore} from 'vuex'
 
     export default {
         name: "login",
         setup() {
+            const store = useStore()
+            const count = store.state.count
             const data = reactive({
                 loginData: {
                     username: "",
                     password: ""
-                }
+                },
+                num: count
+            })
+            const submitForm = (() => {
+                store.commit('setCount', 100)
+                console.log(store.state.count)
             })
             return {
-                ...toRefs(data)
+                ...toRefs(data),
+                submitForm
             }
         }
     }
@@ -67,7 +77,8 @@
         padding: 30px 50px;
         border-radius: 5px;
     }
-    .submit_btn{
+
+    .submit_btn {
         margin: auto;
         display: block;
     }
