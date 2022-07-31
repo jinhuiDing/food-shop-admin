@@ -12,7 +12,34 @@
 
             <el-container>
                 <el-aside class="common-aside" width="200px">
-                    <router-link to="/index">食物列表</router-link>
+                    <el-menu
+                            background-color="none"
+                            text-color="#fff"
+                            default-active="2"
+                            class="el-menu-vertical-demo"
+                            @open="handleOpen"
+                            @close="handleClose"
+                            router="true"
+                    >
+                        <el-sub-menu index="1">
+                            <template #title>
+                                <el-icon><location /></el-icon>
+                                <span>菜品管理</span>
+                            </template>
+                            <el-menu-item-group  >
+                                <el-menu-item index="/index">菜单列表</el-menu-item>
+                            </el-menu-item-group>
+                        </el-sub-menu>
+                        <el-sub-menu index="2">
+                            <template #title>
+                                <el-icon><location /></el-icon>
+                                <span>订单管理</span>
+                            </template>
+                            <el-menu-item-group  >
+                                <el-menu-item index="/order">订单列表</el-menu-item>
+                            </el-menu-item-group>
+                        </el-sub-menu>
+                    </el-menu>
                 </el-aside>
                 <el-main>
                     <router-view></router-view>
