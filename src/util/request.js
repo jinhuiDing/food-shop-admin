@@ -6,3 +6,10 @@ export const loginApi = data => {
         data: data
     })
 }
+
+export const getFoodApi = data => {
+    return get({
+        url: '/food',
+        data
+    })
+}

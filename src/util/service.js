@@ -23,6 +23,7 @@ service.interceptors.request.use(config => {
 //响应拦截
 service.interceptors.response.use(response => {
     loading.close()
+    console.log(response)
     if (response.data.code !== 200) {
         ElMessage.error({
             message: response.data.msg||'接口返回错误',
@@ -52,6 +53,6 @@ export const get = config => {
     return service({
         ...config,
         method: 'get',
-        data: config.data
+        params: config.data
     })
 }
