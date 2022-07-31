@@ -49,7 +49,14 @@
                 num: count
             })
             const submitForm = (() => {
-                store.commit('setCount', 100)
+                // store.commit('setCount', 100)
+                store.dispatch('setCountPromise', 100).then(
+                    res => {
+                        alert("修改成功")
+                    }
+                ).catch(err => {
+                    alert(err)
+                })
                 console.log(store.state.count)
             })
             return {
