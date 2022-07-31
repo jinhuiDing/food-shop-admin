@@ -23,7 +23,7 @@
                     >
                         <el-sub-menu index="1">
                             <template #title>
-                                <el-icon><location /></el-icon>
+                                <el-icon><Menu /></el-icon>
                                 <span>菜品管理</span>
                             </template>
                             <el-menu-item-group  >
@@ -32,7 +32,7 @@
                         </el-sub-menu>
                         <el-sub-menu index="2">
                             <template #title>
-                                <el-icon><location /></el-icon>
+                                <el-icon><Menu /></el-icon>
                                 <span>订单管理</span>
                             </template>
                             <el-menu-item-group  >
