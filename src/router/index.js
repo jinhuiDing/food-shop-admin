@@ -3,6 +3,11 @@ import LayOut from '../views/Layout/LayOut.vue'
 
 const routes = [
     {
+      path: '/login',
+      name:'login',
+      component: ()=>import('../views/pages/login.vue')
+    },
+    {
         path: '/',
         name: 'LayOut',
         component: LayOut,
