@@ -7,7 +7,11 @@ export default createStore({
         count: 1,
     },
     //计算state,获取对应的值
-    getters: {},
+    getters: {
+        countStatus(state){
+            return state.count>=1
+        }
+    },
     //更新状态的方法,更关心state的唯一方法,commit mutations
     mutations: {
         setCount(state, num) {

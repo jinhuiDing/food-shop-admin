@@ -46,19 +46,23 @@
                     username: "",
                     password: ""
                 },
-                num: count
+                num: count,
+                numStatus: store.getters.countStatus
             })
+            console.log("修改前getter", store.getters.countStatus)
             const submitForm = (() => {
                 // store.commit('setCount', 100)
-                store.dispatch('setCountPromise', 100).then(
+                store.dispatch('setCountPromise', -100).then(
                     res => {
                         alert("修改成功")
+                        console.log("修改后getter", store.getters.countStatus)
                     }
                 ).catch(err => {
                     alert(err)
                 })
                 console.log(store.state.count)
             })
+
             return {
                 ...toRefs(data),
                 submitForm
