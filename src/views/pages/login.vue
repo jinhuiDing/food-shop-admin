@@ -23,7 +23,7 @@
                               placeholder="请输入密码"/>
                 </el-form-item>
             </el-form>
-            <el-button type="primary" class="submit_btn" @click="submitForm()"
+            <el-button type="primary" class="submit_btn" @click="submitForm"
             >登陆
             </el-button>
             <p>{{num}}</p>
@@ -35,11 +35,12 @@
 <script>
     import {reactive, toRefs} from 'vue'
     import {useStore} from 'vuex'
-    import number from "@/store/state/num.state";
+    import {useRouter} from 'vue-router'
 
     export default {
         name: "login",
         setup() {
+            const router = useRouter()
             const store = useStore()
             const count = store.state.number.count
             const data = reactive({
@@ -50,18 +51,14 @@
                 num: count,
                 numStatus: store.getters['number.countStatus']
             })
-            console.log("修改前getter", store.getters['number/countStatus'])
+            // console.log("修改前getter", store.getters['number/countStatus'])
             const submitForm = (() => {
                 // store.commit('setCount', 100)
-                store.dispatch('number/setCountPromise', -100).then(
-                    res => {
-                        alert("修改成功")
-                        console.log("修改后getter", store.getters['number/countStatus'])
-                    }
-                ).catch(err => {
-                    alert(err)
+                store.commit('setUserInfo', data.loginData)
+                router.push({
+                    path:'/index'
                 })
-                console.log(store.state.number.count+'=======')
+
             })
 
             return {
