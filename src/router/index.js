@@ -48,7 +48,6 @@ router.beforeEach((to, from, next) => {
 
 //    判断用户是否登陆
     const userInfo = store.state.userInfo.userInfo;
-    console.log(userInfo);
 
     if (!userInfo.username) {
         if (to.path === '/login') {

@@ -56,7 +56,6 @@
             const submitForm = (() => {
                 //请求后台接口
                 loginApi(data.loginData).then(res => {
-                    console.log("响应的数据，",res)
                     store.commit('setUserInfo', res.data)
                     localStorage.setItem('loginData', JSON.stringify(res.data))
                     router.push({

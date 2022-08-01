@@ -11,7 +11,7 @@
                 <el-popconfirm
                         confirm-button-text="OK"
                         cancel-button-text="No, Thanks"
-                        :icon="InfoFilled"
+                        icon="InfoFilled"
                         icon-color="#626AEF"
                         title="你确定要退出吗?"
                         @confirm="logout()"
@@ -29,9 +29,7 @@
                             text-color="#fff"
                             default-active="2"
                             class="el-menu-vertical-demo"
-                            @open="handleOpen"
-                            @close="handleClose"
-                            router="true"
+                            :router=true
                     >
                         <el-sub-menu index="1">
                             <template #title>
